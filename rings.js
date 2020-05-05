@@ -1,3 +1,9 @@
+// Name any p5.js functions we use in the global so Glitch can recognize them.
+/* global createCanvas, colorMode, HSB, width, height, 
+          random, background, fill, color, random
+          rect, ellipse, stroke, image, loadImage, 
+          collideCircleCircle, text, mouseX, mouseY,
+          noFill, strokeWeight */
 
 
 function setup() {
