@@ -5,58 +5,47 @@
           collideCircleCircle, text, mouseX, mouseY, noStroke, line */
 
 
+// We'll use variables for most of our colors in this code-along.
 let backgroundColor, color1, color2, textColor, globalS, globalB
 
+
 function setup() {
+  // Canvas & color settings
   createCanvas(400, 400)
   colorMode(HSB, 360, 100, 100)
   noStroke()
-  // Set saturation and brightness globally so we can experiment with different color palettes as we go without having to change multiple things
-  globalS = 90
-  globalB = 90
-  // We'll keep background color in a variable so we can modify it in other functions.
+
+  // 0-100 is greyscale in HSB as we've defined it. 0 is black and 100 is white.
   backgroundColor = color(95)
-  // The variable color1 will be used for the ellipse on the left, and color2 will be the ellipse on the right.
-  color1 = color(0, globalS, globalB)
-  color2 = color(200, globalS, globalB)
-  // We will use this textColor variable as a way to make sure the text is always visible against a changing background.
   textColor = color(20)
+  // HUE - 0 to 360 degrees on a color wheel - 0 is red, 120 is greem and 240 is blue.
+  // SATURATION - 0 is no color (greyscale), and 100 is as bold as possible.
+  // BRIGHTNESS - 0 is no light (black), and 100 is as bright as possible.
+  color1 = color(0, 80, 80)
+  color2 = color(200, 80, 80)
 }
 
 function draw() {
   background(backgroundColor)
   drawCenterLine()
-  if (mouseX > width / 2) {
-    nightMode()
-  } else {
-    dayMode()
-  }
+
+
+  // The red and blue circles:
   fill(color1)
-  ellipse(1/4 * width, height / 2, 50)
+  ellipse(.25 * width, .5 * width, 50)
   fill(color2)
-  ellipse(3/4 * width, height / 2, 50)
+  ellipse(300, 200, 50)
+
+  // The grey circle and the text:
   fill(textColor)
+  ellipse(1/8 * width, 1/8 * height, 50)
   text("Flip the switch", 20, 20)
-  ellipse(mouseX, mouseY, 50)
 }
 
 function drawCenterLine() {
-  // Turn stroke on, draw the line, turn stroke back off.
+  // This function will turn stroke on, draw the line, and then turn stroke back off.
+  // Remember a line segment in p5.js has four arguments: x1, y1, x2, y2
   stroke(textColor)
   line(width / 2, 0, width / 2, height)
   noStroke()
-}
-
-function dayMode() {
-  backgroundColor = color(95)
-  color1 = color(0, globalS, globalB)
-  color2 = color(200, globalS, globalB)
-  textColor = color(20)
-}
-
-function nightMode() {
-  backgroundColor = color(20)
-  color1 = color(200, globalS, globalB)
-  color2 = color(0, globalS, globalB)
-  textColor = color(95)
 }
