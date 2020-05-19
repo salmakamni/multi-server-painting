@@ -17,7 +17,9 @@ function setup() {
 
 function draw() {
   chooseColors()
-  rect(mouseX, mouseY, 15, 15)
+  if (mouseIsPressed) {
+    line(mouseX + random(10) - 5, mouseY + random(10) - 5, mouseX + random(10) - 5, mouseY + random(10) -5)
+  }
 }
 
 function chooseColors() {
