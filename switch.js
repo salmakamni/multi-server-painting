@@ -11,7 +11,7 @@ let backgroundColor, color1, color2, textColor, globalS, globalB
 
 function setup() {
   // Canvas & color settings
-  createCanvas(400, 400)
+  createCanvas(500, 500)
   colorMode(HSB, 360, 100, 100)
   noStroke()
 
@@ -34,12 +34,26 @@ function draw() {
   fill(color1)
   ellipse(.25 * width, .5 * width, 50)
   fill(color2)
-  ellipse(300, 200, 50)
+  ellipse(3/4 * width, 1/2 * height, 50)
 
   // The grey circle and the text:
   fill(textColor)
-  ellipse(1/8 * width, 1/8 * height, 50)
+  ellipse(mouseX, mouseY, 50)
   text("Flip the switch", 20, 20)
+  
+  if(mouseX > width / 2) {
+    nightMode();
+  } else {
+    dayMode();
+  }
+}
+
+function nightMode() {
+  backgroundColor = color(20);
+}
+
+function dayMode() {
+  backgroundColor = color(95)
 }
 
 function drawCenterLine() {
