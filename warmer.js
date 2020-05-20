@@ -30,7 +30,15 @@ function draw() {
   rect(rectPosition.x, rectPosition.y, 20, 20)
   line(spherePosition.x, spherePosition.y, rectPosition.x, rectPosition.y)
   mousePosition = {x: mouseX, y: mouseY}
-  text(`The circle and sphere are ${computeDistance(mousePosition, rectPosition)} units apart.`, 20, 20)
+  let dis = computeDistance(mousePosition, rectPosition);
+  text(`The circle and sphere are ${dis} units apart.`, 20, 20)
+  text(`you are ${computeCategoryOfDistance(dis)}!`, 20, 35)
+  
+  for(let r =0; r< height; r++) {
+    for(let c=0; c<width; c++) {
+      
+    }
+  }
 }
 
 function mousePressed() {
@@ -43,5 +51,22 @@ function computeDistance(pos1, pos2) {
 }
 
 function computeCategoryOfDistance(distance) {
-  if distance
+  if (distance > width / 2) {
+    return 'cold'
+  } else if (distance > width / 4) {
+    return 'warm'
+  } else if(distance > width / 8) {
+    return 'hot'
+  } else {
+    return 'on fire!'
+  }
+}
+
+function getColor(category) {
+  if (category == 'cold') {
+    return color(255, 0, 0)
+  } else if (category === 'warm') {
+    
+  }
+    return
 }
