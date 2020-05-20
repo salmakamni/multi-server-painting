@@ -19,7 +19,7 @@ function setup() {
   lives = 3
   gameIsOver = false
   car1X = 0
-  car1Y = 100
+  car1Y = height - 100
   car1V = 5
 }
 
@@ -31,19 +31,19 @@ function draw() {
   // Code to display Frog
   fill(120, 80, 80)
   ellipse(frogX, frogY, 20)
-  moveCars()
+  if (!gameIsOver) {
+    moveCars()
+  }
   drawCars()
   checkCollisions()
   checkWin()
   displayScores()
-  // if (keyIsPressed) {
-  //   keyPressed()
-  // }
 
 }
 
 function keyPressed() {
-  if (keyCode === UP_ARROW) {
+  if (!gameIsOver) {
+     if (keyCode === UP_ARROW) {
     frogY -= 20
   } else if (keyCode === DOWN_ARROW) {
     frogY += 20
@@ -52,6 +52,8 @@ function keyPressed() {
   } else if (keyCode === RIGHT_ARROW) {
     frogX += 20
   }
+  }
+ 
 }
 
 function moveCars() {
@@ -100,7 +102,11 @@ function displayScores() {
   // Display Lives
   text(`Lives: ${lives}`, 10, 20)
   // Display Score
+  text(`Score: ${score}`, 10, 30)
 
   // Display game over message if the game is over
+  if (gameIsOver) {
+    text("GAME OVER", 10, 40)
+  }
 
 }
