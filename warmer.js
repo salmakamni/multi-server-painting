@@ -2,11 +2,11 @@
 /* global createCanvas, colorMode, HSB, width, height, 
           random, background, fill, color, random
           rect, ellipse, stroke, image, loadImage, 
-          collideCircleCircle, text, mouseX, mouseY, 
-          strokeWeight, line, mouseIsPressed, windowWidth, 
+          collideCircleCircle, text, mouseX, mouseY, round,
+          strokeWeight, line, mouseIsPressed, windowWidth, sqrt,
           windowHeight, noStroke */
 
-let backgroundColor, spherePosition, rectPosition
+let backgroundColor, spherePosition, rectPosition, mousePosition
 
 function setup() {
   // Canvas & color settings
@@ -19,51 +19,29 @@ function setup() {
     y: 100
   }
   rectPosition = {
-    x: 130,
-    y: 140
+    x: 100,
+    y: 100
   }
 }
 
 function draw() {
-  background(backgroundColor)
+  background(backgroundColor);
   ellipse(spherePosition.x, spherePosition.y, 20, 20)
   rect(rectPosition.x, rectPosition.y, 20, 20)
-  // line(spherePosition.x, spherePosition.y, rectPosition.x, rectPosition.y)
-
-  let distance1 = computeDistance(spherePosition, rectPosition)
-  text(`The circle and sphere are ${round(distance1)} units apart.`, 20, 20)
-
-  let mousePosition = {
-    x: mouseX,
-    y: mouseY
-  }
-  let distance2 = computeDistance(spherePosition, mousePosition)
-  let distanceDescription = computeCategoryOfDistance(spherePosition, mousePosition)
-  text(`The circle and your mouse are ${round(distance2)} units apart; you're ${distanceDescription}.`, 20, 40)
-}
-
-function computeDistance(point1, point2) {
-  let deltaX = point1.x - point2.x
-  let deltaY = point1.y - point2.y
-  let distance = sqrt((deltaX ** 2) + (deltaY ** 2))
-  return distance // returns a number
-}
-
-function computeCategoryOfDistance(point1, point2) {
-  let distance = computeDistance(point1, point2)
-  if (distance > 200) {
-    backgroundColor = color(240, 10, 100)
-    return "cold"
-  } else if (distance > 50) {
-    backgroundColor = color(120, 10, 100)
-    return "warmer"
-  } else {
-    backgroundColor = color(0, 10, 100)
-    return "red hot"
-  }
+  line(spherePosition.x, spherePosition.y, rectPosition.x, rectPosition.y)
+  mousePosition = {x: mouseX, y: mouseY}
+  text(`The circle and sphere are ${computeDistance(mousePosition, rectPosition)} units apart.`, 20, 20)
 }
 
 function mousePressed() {
   spherePosition.x = random(width)
   spherePosition.y = random(height)
+}
+
+function computeDistance(pos1, pos2) {
+  return round(sqrt(((pos1.x - pos2.x) ** 2) * ((pos1.y - pos2.y) ** 2)))
+}
+
+function computeCategoryOfDistance(distance) {
+  if distance
 }
