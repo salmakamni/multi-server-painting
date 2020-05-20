@@ -36,10 +36,14 @@ function draw() {
   checkCollisions()
   checkWin()
   displayScores()
+  // if (keyIsPressed) {
+  //   keyPressed()
+  // }
+
 }
 
 function keyPressed() {
-  if (keyIsDown(UP_ARROW)) {
+  if (keyCode === UP_ARROW) {
     frogY -= 20
   } else if (keyCode === DOWN_ARROW) {
     frogY += 20
@@ -74,10 +78,19 @@ function checkCollisions() {
     frogY = height - 30
     lives -= 1;
   }
+  
+  if (lives < 0) {
+    gameIsOver = true
+  }
 
 }
 
 function checkWin() {
+  if (frogY < 50) {
+    score += 1
+    frogY = height - 30
+    frogX = width / 2
+  }
   // If the frog makes it into the yellow gold zone, increment the score and move the frog back down to the bottom.
 }
 
