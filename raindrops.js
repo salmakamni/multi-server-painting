@@ -29,7 +29,7 @@ class RainDrop {
     this.d = random(5,15)
     this.x = random(width)
     this.y = random(height)
-    this.fallSpeed = random(5,15)
+    this.fallSpeed = 20 - this.d
   }
   
   show() {

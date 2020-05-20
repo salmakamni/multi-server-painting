@@ -1,5 +1,5 @@
 // Name any p5.js functions we use in the global so Glitch can recognize them.
-/* global createCanvas, colorMode, HSB, width, height, 
+/* global createCanvas, colorMode, HSB, width, height, HSL
           random, background, fill, color, random
           rect, ellipse, stroke, image, loadImage, 
           collideCircleCircle, text, mouseX, mouseY, 
@@ -9,28 +9,34 @@ let dots
 
 function setup() {
   createCanvas(windowWidth - 20, windowHeight - 20)
-  colorMode(HSB, 360, 100, 100)
+  colorMode(HSL, 360, 100, 100)
   dots = []
-  for (let i = 0; i < 100; i++) {
-    dots.push(new BouncyDot())
+  for(let i =0; i< 100; i++) {
+    dots.push(new BouncyDot(i))
   }
 }
 
 function draw() {
   background(220, 0, 80)
-  for (let i = 0; i < 100; i++) {
+  for(let i =0;i<dots.length;i++) {
     dots[i].float()
     dots[i].display()
   }
 }
 
+function mousePressed() {
+  // We'll use this for console log statements only.
+  
+}
+
 class BouncyDot {
-  constructor() {
+  constructor(i) {
     // Randomly generate position
+    this.i = i;
     this.x = random(width)
     this.y = random(height)
     // Randomly generate radius
-    this.r = random(5, 12)
+    this.r = random(12, 20)
     // Randomly generate color
     this.color = random(360)
     // Randomly generate a master velocity (broken into components)...
@@ -63,5 +69,7 @@ class BouncyDot {
     fill(this.color, 80, 70)
     noStroke()
     ellipse(this.x, this.y, this.r * 2)
+    fill(this.color, 80, 20)
+    text(`${this.i}`, this.x, this.y)
   }
 }
