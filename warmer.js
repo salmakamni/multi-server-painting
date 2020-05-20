@@ -34,9 +34,11 @@ function draw() {
   text(`The circle and sphere are ${dis} units apart.`, 20, 20)
   text(`you are ${computeCategoryOfDistance(dis)}!`, 20, 35)
   
-  for(let r =0; r< height; r++) {
-    for(let c=0; c<width; c++) {
-      
+  for(let r =0; r< height; r+=10) {
+    for(let c=0; c<width; c+=10) {
+      let pos = {x: r, y: c}
+      fill(getColor(computeCategoryOfDistance(computeDistance(pos, rectPosition))))
+      ellipse(pos.x, pos.y, 5)
     }
   }
 }
@@ -65,8 +67,12 @@ function computeCategoryOfDistance(distance) {
 function getColor(category) {
   if (category == 'cold') {
     return color(255, 0, 0)
-  } else if (category === 'warm') {
-    
+  } else if (category == 'warm') {
+    return color(255, 255, 0)
+  } else if (category == 'hot') {
+    return color(200, 200, 200)
+  } else {
+    return color(255, 255, 255)
   }
-    return
+
 }
