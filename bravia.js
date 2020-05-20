@@ -63,13 +63,18 @@ class BouncyDot {
     if (this.y - this.r < 0) {
       this.yVelocity = this.masterYvelocity
     }
+    if (collideCircleCircle(this.x, this.y, this.r, mouseX, mouseX, 100)) {
+      this.xVelocity *= -1
+      this.yVelocity *= -1
+    }
   }
 
   display() {
     fill(this.color, 80, 70)
     noStroke()
     ellipse(this.x, this.y, this.r * 2)
-    fill(this.color, 80, 20)
-    text(`${this.i}`, this.x, this.y)
+    
+    // fill(this.color, 80, 20)
+    // text(`${this.i}`, this.x, this.y)
   }
 }
