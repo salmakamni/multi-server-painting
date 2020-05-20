@@ -1,6 +1,6 @@
 // Name any p5.js functions we use in the global so Glitch can recognize them.
-/* global createCanvas, colorMode, HSB, width, height, 
-          random, background, fill, color, random
+/* global createCanvas, colorMode, HSB, width, height, keyCode, LEFT_ARROW, UP_ARROW, RIGHT_ARROW, DOWN_ARROW
+          random, background, fill, color, random, textSize
           rect, ellipse, stroke, image, loadImage, 
           collideCircleCircle, text, mouseX, mouseY, 
           strokeWeight, line, mouseIsPressed */
@@ -39,7 +39,7 @@ function draw() {
 }
 
 function keyPressed() {
-  if (keyCode === UP_ARROW) {
+  if (keyIsDown(UP_ARROW)) {
     frogY -= 20
   } else if (keyCode === DOWN_ARROW) {
     frogY += 20
@@ -52,9 +52,12 @@ function keyPressed() {
 
 function moveCars() {
   // Move the car
+  car1X += car1V
 
   // Reset if it moves off screen
-
+  if (car1X > width) {
+    car1X = 0
+  }
 }
 
 function drawCars() {
@@ -66,6 +69,11 @@ function drawCars() {
 
 function checkCollisions() {
   // If the frog collides with the car, reset the frog and subtract a life.
+  if (collideRectCircle(car1X, car1Y, 40, 30, frogX, frogY, 20)) {
+    frogX = width / 2
+    frogY = height - 30
+    lives -= 1;
+  }
 
 }
 
