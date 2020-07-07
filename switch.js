@@ -40,7 +40,7 @@ function draw() {
 
   // The grey circle and the text:
   fill(textColor);
-  ellipse(50, 50, 50);
+  ellipse(mouseX, mouseY, 50);
   text("Flip the switch", 20, 20);
 }
 
