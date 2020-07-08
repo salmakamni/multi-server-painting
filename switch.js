@@ -5,7 +5,7 @@
           collideCircleCircle, text, mouseX, mouseY, noStroke, line */
 
 // We'll use variables for most of our colors in this code-along.
-let backgroundColor, color1, color2, textColor;
+let backgroundColor, color1, color2, textColor, globalS, globalB;
 
 function setup() {
   // Canvas & color settings
@@ -22,8 +22,10 @@ function setup() {
   //       is blue.
   // SATURATION - 0 is no color (greyscale), and 100 is as bold as possible.
   // BRIGHTNESS - 0 is no light (black), and 100 is as bright as possible.
-  color1 = color(0, 80, 80);
-  color2 = color(200, 80, 80);
+  globalS = 80;
+  globalB = 80;
+  color1 = color(0, globalS, globalB);
+  color2 = color(200, globalS, globalB);
 }
 
 function draw() {
@@ -32,12 +34,9 @@ function draw() {
   // contained in that function.
   drawCenterLine();
   if (mouseX > 200) {
-    backgroundColor = color(20);
-    
-    
+    nightMode();
   } else {
-    backgroundColor = color(95);
-    
+    dayMode();
   }
 
   // The red and blue circles:
@@ -65,5 +64,15 @@ function drawCenterLine() {
 }
 
 function nightMode() {
-  
+    backgroundColor = color(20);
+    textColor = color(95);
+    color1 = color(200, globalS, 80);
+    color2 = color(0, globalS, 80);
+}
+
+function dayMode() {
+    backgroundColor = color(95);
+    textColor = color(20);
+    color1 = color(0, globalS, 80);
+    color2 = color(200, globalS, 80)
 }
