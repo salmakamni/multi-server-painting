@@ -30,7 +30,7 @@ function draw() {
   background(backgroundColor);
   // Call the drawCenterLine function here to run the three lines of code
   // contained in that function.
-
+  drawCenterLine();
 
   // The red and blue circles:
   fill(color1);
