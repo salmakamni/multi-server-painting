@@ -22,8 +22,8 @@ function setup() {
   //       is blue.
   // SATURATION - 0 is no color (greyscale), and 100 is as bold as possible.
   // BRIGHTNESS - 0 is no light (black), and 100 is as bright as possible.
-  globalS = 80;
-  globalB = 80;
+  globalS = 99;
+  globalB = 99;
   color1 = color(0, globalS, globalB);
   color2 = color(200, globalS, globalB);
 }
@@ -66,13 +66,13 @@ function drawCenterLine() {
 function nightMode() {
     backgroundColor = color(20);
     textColor = color(95);
-    color1 = color(200, globalS, 80);
-    color2 = color(0, globalS, 80);
+    color1 = color(200, globalS, globalB);
+    color2 = color(0, globalS, globalB);
 }
 
 function dayMode() {
     backgroundColor = color(95);
     textColor = color(20);
-    color1 = color(0, globalS, 80);
-    color2 = color(200, globalS, 80)
+    color1 = color(0, globalS, globalB);
+    color2 = color(200, globalS, globalB)
 }
