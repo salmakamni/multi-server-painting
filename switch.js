@@ -31,16 +31,20 @@ function draw() {
   // Call the drawCenterLine function here to run the three lines of code
   // contained in that function.
   drawCenterLine();
+  if (mouseX > 200) {}
 
   // The red and blue circles:
   fill(color1);
   ellipse(100, 200, 50);
   fill(color2);
   ellipse(300, 200, 50);
+  
+  // mouseX -> refers to the exact X coordinate of the mouse
+  // mouseY -> refers to the exact Y coordinate of the mouse
 
   // The grey circle and the text:
   fill(textColor);
-  ellipse(50, 50, 50);
+  ellipse(mouseX, mouseY, 50);
   text("Flip the switch", 20, 20);
 }
 
