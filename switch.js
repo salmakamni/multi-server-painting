@@ -31,7 +31,14 @@ function draw() {
   // Call the drawCenterLine function here to run the three lines of code
   // contained in that function.
   drawCenterLine();
-  if (mouseX > 200) {}
+  if (mouseX > 200) {
+    backgroundColor = color(20);
+    
+    
+  } else {
+    backgroundColor = color(95);
+    
+  }
 
   // The red and blue circles:
   fill(color1);
@@ -55,4 +62,8 @@ function drawCenterLine() {
   stroke(textColor);
   line(200, 0, 200, 400);
   noStroke();
+}
+
+function nightMode() {
+  
 }
