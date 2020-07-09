@@ -19,12 +19,15 @@ function setup() {
 
 function draw() {
   chooseColors(); // call chooseColors function
+  let diameter = random(5,40)
   if (mouseIsPressed) {
-    rect(mouseX, mouseY, 15, 15);
+    ellipse(mouseX, mouseY, diameter, diameter);
   }
   //rect(mouseX, mouseY, 15, 15); //draw a 15x15 rectangle wherever the mouse is
 }
 
 function chooseColors() {
+  brushHue = random(360)
   fill(brushHue, 50, 80); // set the color we paint with to also be brushHue, 50, 80
+  
 }
