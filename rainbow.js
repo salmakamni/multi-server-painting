@@ -3,25 +3,24 @@
           random, background, fill, color, random
           rect, ellipse, stroke, image, loadImage, 
           collideCircleCircle, text, mouseX, mouseY, strokeWeight, line, mouseIsPressed
-          mouseButton, RIGHT */
+          mouseButton, RIGHT, noStroke */
 
 let brushHue
 
 function setup() {
   // Canvas & color settings
-  createCanvas(400, 400);
-  colorMode(HSB, 360, 100, 100);
-  brushHue = 0;
-  strokeWeight(6);
+  createCanvas(400, 400); // make our canvas 400x400
+  colorMode(HSB, 360, 100, 100); // use HSB coloring
+  brushHue = 0; // start the brush's hue at 0
+  noStroke();
 }
 
 function draw() {
-  background(95);
-  chooseColors();
-  rect(mouseX, mouseY, 15, 15);
+  background(95); // paint the canvas gray (95% where 100% is completely white)
+  chooseColors(); // call chooseColors function
+  rect(mouseX, mouseY, 15, 15); //draw a 15x15 rectangle wherever the mouse is
 }
 
 function chooseColors() {
-  stroke(brushHue, 50, 80);
-  fill(brushHue, 50, 80);
+  fill(brushHue, 50, 80); // set the color we paint with to also be brushHue, 50, 80
 }
