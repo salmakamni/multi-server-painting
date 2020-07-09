@@ -18,21 +18,21 @@ function setup() {
 }
 
 function draw() {
-  brushSize()
-  chooseColors(); // call chooseColors function
+  
+  //chooseColors(); // call chooseColors function
   if (mouseIsPressed) {
     ellipse(mouseX, mouseY, diameter, diameter);
   }
-  
+  brushSize()
   keyPressed()
 }
 
 function chooseColors() {
-  // brushHue +=2;
-  // if (brushHue === 360 ) {
-  //   brushHue = 0;
-  // }
-  keyPressed();
+   brushHue +=2;
+   if (brushHue === 360 ) {
+     brushHue = 0;
+   }
+  //keyPressed();
   fill(brushHue, 50, 80); // set the color we paint with to also be brushHue, 50, 80
   
 }
@@ -45,11 +45,19 @@ function brushSize() {
 }
 
 function keyPressed() {  
+  
   //limits for brushHue
-  if (brushHue == 0) {
+  if (brushHue <= 0) {
     brushHue = 365
   }
-  if (brushHue == 365) {
+  if (brushHue >= 365) {
     brushHue = 0;
   }
+  
+  //have color change if right key pressed
+  if (keyCode === RIGHT_ARROW) {
+    brushHue += 25
+    fill(brushHue, 50, 80);
+  }
+  
 }
