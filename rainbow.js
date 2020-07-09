@@ -13,12 +13,16 @@ function setup() {
   colorMode(HSB, 360, 100, 100); // use HSB coloring
   brushHue = 0; // start the brush's hue at 0
   noStroke(); // don't put a stroke on the stuff we draw
+  background(95); // paint the canvas gray (95% where 100% is completely white)
+
 }
 
 function draw() {
-  background(95); // paint the canvas gray (95% where 100% is completely white)
   chooseColors(); // call chooseColors function
-  rect(mouseX, mouseY, 15, 15); //draw a 15x15 rectangle wherever the mouse is
+  if (mouseIsPressed) {
+    rect(mouseX, mouseY, 15, 15);
+  }
+  //rect(mouseX, mouseY, 15, 15); //draw a 15x15 rectangle wherever the mouse is
 }
 
 function chooseColors() {
