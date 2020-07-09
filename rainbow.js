@@ -8,10 +8,11 @@
 let brushHue, diameter
 
 function setup() {
+  
   // Canvas & color settings
   createCanvas(400, 400); // make our canvas 400x400
   colorMode(HSB, 360, 100, 100); // use HSB coloring
-  brushHue = 0; // start the brush's hue at 0
+  brushHue = 1; // start the brush's hue at 1
   noStroke(); // don't put a stroke on the stuff we draw
   background(95); // paint the canvas gray (95% where 100% is completely white)
   diameter = 10
@@ -46,6 +47,12 @@ function brushSize() {
 
 function keyPressed() {  
   
+  //have color change if right key pressed
+  if (keyCode === RIGHT_ARROW) {
+    brushHue += 25
+  }
+  fill(brushHue, 50, 80);
+  
   //limits for brushHue
   if (brushHue <= 0) {
     brushHue = 365
@@ -54,10 +61,6 @@ function keyPressed() {
     brushHue = 0;
   }
   
-  //have color change if right key pressed
-  if (keyCode === RIGHT_ARROW) {
-    brushHue += 25
-    fill(brushHue, 50, 80);
-  }
+  
   
 }
