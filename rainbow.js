@@ -14,16 +14,17 @@ function setup() {
   brushHue = 0; // start the brush's hue at 0
   noStroke(); // don't put a stroke on the stuff we draw
   background(95); // paint the canvas gray (95% where 100% is completely white)
-  diameter = 15
+  diameter = 10
 }
 
 function draw() {
+  brushSize()
   chooseColors(); // call chooseColors function
   if (mouseIsPressed) {
     ellipse(mouseX, mouseY, diameter, diameter);
   }
+  
   keyPressed()
-  //rect(mouseX, mouseY, 15, 15); //draw a 15x15 rectangle wherever the mouse is
 }
 
 function chooseColors() {
@@ -36,24 +37,14 @@ function chooseColors() {
   
 }
 
-function keyPressed() {
-  //changing brushHue
-  if (keyCode === LEFT_ARROW) {
-    brushHue--;
+function brushSize() {
+  diameter++;
+  if (diameter === 30) {
+    diameter = 10;
   }
-  if (keyCode === RIGHT_ARROW) {
-    brushHue++;
-  }
-  //changing brushDiameter
-  if (keyCode === UP_ARROW) {
-    diameter +=1;
-  }
-  if (keyCode === DOWN_ARROW) {
-    diameter -=1;
-  }
-  
-  
-  
+}
+
+function keyPressed() {  
   //limits for brushHue
   if (brushHue == 0) {
     brushHue = 365
