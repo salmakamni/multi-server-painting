@@ -12,7 +12,7 @@ function setup() {
   createCanvas(400, 400); // make our canvas 400x400
   colorMode(HSB, 360, 100, 100); // use HSB coloring
   brushHue = 0; // start the brush's hue at 0
-  noStroke();
+  noStroke(); // don't put a stroke on the stuff we draw
 }
 
 function draw() {
