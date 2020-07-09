@@ -3,9 +3,9 @@
           random, background, fill, color, random
           rect, ellipse, stroke, image, loadImage, 
           collideCircleCircle, text, mouseX, mouseY, strokeWeight, line, mouseIsPressed
-          mouseButton, RIGHT, noStroke */
+          mouseButton, RIGHT, noStroke, keyCode, LEFT_ARROW */
 
-let brushHue
+let brushHue, diameter
 
 function setup() {
   // Canvas & color settings
@@ -14,12 +14,11 @@ function setup() {
   brushHue = 0; // start the brush's hue at 0
   noStroke(); // don't put a stroke on the stuff we draw
   background(95); // paint the canvas gray (95% where 100% is completely white)
-
+  diameter = 15;
 }
 
 function draw() {
   chooseColors(); // call chooseColors function
-  let diameter = random(5,40)
   if (mouseIsPressed) {
     ellipse(mouseX, mouseY, diameter, diameter);
   }
@@ -27,7 +26,16 @@ function draw() {
 }
 
 function chooseColors() {
-  brushHue = random(360)
+  brushHue +=2;
+  if (brushHue === 360 ) {
+    brushHue = 0;
+  }
   fill(brushHue, 50, 80); // set the color we paint with to also be brushHue, 50, 80
   
+}
+
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) {
+    //
+  }
 }
