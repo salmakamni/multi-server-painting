@@ -1,4 +1,4 @@
-Welcome to CSSI
+Collaborative Drawing App:
 =================
 
-Click `Show` in the header to see the project examples. 
+download code, set up multiple tabs on localhost:3000.
